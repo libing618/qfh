@@ -1,4 +1,4 @@
-const URL_base = 'https://trce3aqb.engine.lncld.net/1.1/functions/';
+const URL_base = 'service-3c2g9yxt-1256932165.ap-beijing.apigateway.myqcloud.com/prepub/';
 const md5 = require('MD5').hexMD5
 const COS = require('cos-wx-sdk-v5')
 const {b64_hmac_sha1} = require('SHA1')
@@ -13,31 +13,12 @@ var cos = new COS({
     callback(authorization);
   }
 });
-function lcRequest(f,parmart){
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: URL_base+f,
-      method: 'POST',
-      header: {
-        'X-LC-Id': 'Trce3aqbc6spacl6TjA1pndr-gzGzoHsz',
-        'X-LC-Key': 'CBbIFAhL4zOyCT9PQM5273bP',
-        'Accept': 'application/json'                 //这有一个大坑，不能用Content-Type：'application/json'
-      },
-      data: parmart,
-      success: function(res){     //这要注意返回的json名称有变化，要在控制台进行查看,千万不要用id这样的保留字作自定义的列名
-        resolve(res);
-      },
-      fail: function(error){
-        reject(error);
-      }
-    })
-  })
-};
-function scfRequest(fUrl,parmart){
+
+function scfRequest(fUrl,method,parmart){
   return new Promise((resolve, reject) => {
     wx.request({      //service-ocoqdd0t-1254065455.ap-beijing.apigateway.myqcloud.com
-      url: 'https://wxlogin.sxlyqdzsw.cn/test//'+fUrl,
-      method: 'POST',
+      url: URL_base+fUrl,
+      method: method,
       header: {"content-type": 'application/json'},
       data: parmart,
       success: function(res){     //这要注意返回的json名称有变化，要在控制台进行查看,千万不要用id这样的保留字作自定义的列名
@@ -61,8 +42,8 @@ cosUploadFile: function(filePath){
   }, requestCallback);
 },
 
-lcRequest: lcRequest,
 scfRequest: scfRequest,
+
 signRecognition: function(){
   return Promise.resolve(lcRequest('setRole',))
 },

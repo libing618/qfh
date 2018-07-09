@@ -1,5 +1,5 @@
 const wxappNumber = 2;    //本小程序在开放平台中自定义的序号
-const {lcRequest,cosUploadFile,signAiQQ} = require('../libs/accessLib')
+const {scfRequest,cosUploadFile,signAiQQ} = require('../libs/accessLib')
 var app = getApp();
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
               withCredentials: true,
               success: function (wxuserinfo) {
                 if (wxuserinfo) {
-                  lcRequest('wxLogin' + wxappNumber,{ code: wxlogined.code, encryptedData: wxuserinfo.encryptedData, iv: wxuserinfo.iv }).then(({data:{result},errMsg,header})=>{
+                  scfRequest('qftwl','GET',{ code: wxlogined.code, encryptedData: wxuserinfo.encryptedData, iv: wxuserinfo.iv }).then(({data:{result},errMsg,header})=>{
                     console.log(result)
                     if (errMsg == "request:ok"){
                       wx.setStorage({key:'loginInfo',data:result})
