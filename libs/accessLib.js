@@ -1,4 +1,4 @@
-const URL_base = 'service-3c2g9yxt-1256932165.ap-beijing.apigateway.myqcloud.com/prepub/';
+const URL_base = 'https://service-3c2g9yxt-1256932165.ap-beijing.apigateway.myqcloud.com/prepub/';
 const md5 = require('MD5').hexMD5
 const COS = require('cos-wx-sdk-v5')
 const {b64_hmac_sha1} = require('SHA1')

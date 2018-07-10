@@ -32,6 +32,7 @@ Page({
         if (logined) {
           resolve(true)
         } else {
+          console.log(logined)
           openWxLogin().then(wxId => {      //登录
             app.roleData.user = wxId;
             resolve(true);
@@ -41,7 +42,7 @@ Page({
     }).then(() => {
       that.setData({
         unAuthorize: false,
-        grids: require('../../libs/allmenu').iMenu('index')
+        grids: require('../../libs/allmenu').iMenu('serve')
       })
     }).catch((err)=>{
       console.log(err);

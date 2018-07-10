@@ -1,12 +1,12 @@
 var app = getApp()
 Page({
-  data:{ grids: []},
+  data:{ grids: [] },
   onLoad:function(options){
-    var that=this ;
-    that.setData({grids: app.wmenu[2]}) 
+
   },
   onReady:function(){
-    // 页面渲染完成
+    var that=this ;
+    that.setData({ grids: require('../../libs/allmenu').iMenu('customer')}) 
   },
   onShow:function(){
     // 页面显示

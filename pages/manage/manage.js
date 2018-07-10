@@ -13,7 +13,7 @@ Page({
   onLoad:function(options){
     var that=this ;
     that.setData({
-      grids: app.wmenu[3]
+      grids: require('../../libs/allmenu').iMenu('manage')
     });
   },
   onReady:function(){
