@@ -32,7 +32,6 @@ Page({
         if (logined) {
           resolve(true)
         } else {
-          console.log(logined)
           openWxLogin().then(wxId => {      //登录
             app.roleData.user = wxId;
             resolve(true);

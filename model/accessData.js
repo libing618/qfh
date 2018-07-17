@@ -1,5 +1,5 @@
 const wxappNumber = 2;    //本小程序在开放平台中自定义的序号
-const qcloud = require('../libs/client-sdk/index');
+const { requestLogin } = require('../libs/client-sdk/index');
 const {cosUploadFile,signAiQQ} = require('../libs/accessLib')
 var app = getApp();
 
@@ -13,9 +13,9 @@ module.exports = {
               withCredentials: true,
               success: function (wxuserinfo) {
                 if (wxuserinfo) {
-                  qcloud.requestLogin({ code: wxlogined.code, encryptedData: wxuserinfo.encryptedData, iv: wxuserinfo.iv }).then(({data:{result},errMsg,header})=>{
+                  requestLogin({ code: wxlogined.code, encryptedData: wxuserinfo.encryptedData, iv: wxuserinfo.iv }).then(result=>{
                     console.log(result)
-                    if (errMsg == "request:ok"){
+                    if (result.oId){ //(errMsg == "request:ok"){
                       wx.setStorage({key:'loginInfo',data:result})
                       resolve(result)
                     } else {
