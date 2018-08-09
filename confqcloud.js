@@ -1,4 +1,5 @@
 var host = 'https://service-3c2g9yxt-1256932165.ap-beijing.apigateway.myqcloud.com/prepub';
+//var host = 'https://service-3c2g9yxt-1256932165.ap-beijing.apigateway.myqcloud.com'
 module.exports = {
   signAiParmas: {
     "app_id": '10000',
@@ -12,8 +13,8 @@ module.exports = {
       host,
 
       // 登录地址，用于建立会话
-      loginUrl: `${host}/qftwl`,
-
+      //loginUrl: `${host}/qftwl`,
+      loginUrl: `https://service-3c2g9yxt-1256932165.ap-beijing.apigateway.myqcloud.com/prepub/wlpy`,
       // 测试的请求地址，用于测试会话
       requestUrl: `${host}/user`,
 
